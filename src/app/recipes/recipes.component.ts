@@ -8,7 +8,7 @@ import { Recipe } from './recipe.model';
   providers: [RecipeService]
 })
 export class RecipesComponent implements OnInit {
-  recipeItem : Recipe
+  recipeItem : Recipe;
   constructor(private recipeSRV :RecipeService) { }
 
   ngOnInit(): void {
