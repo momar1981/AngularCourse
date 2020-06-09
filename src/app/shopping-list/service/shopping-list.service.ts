@@ -6,10 +6,23 @@ export class ShoppingListService {
   public _SelectedIngredient : Ingredient ;
   constructor() { }
 
+  _AddIngredientEvent = new EventEmitter<Ingredient[]>();
+
   public AddIngredient(newIngredient : Ingredient)
   {
     this._Ingredients.push(newIngredient);
+    this._AddIngredientEvent.emit(this._Ingredients);
   }
+
+  public AddIngredients(newIngredients : Ingredient[])
+  {
+    // newIngredients.forEach(x => {
+    //   this._Ingredients.push(x);
+    // });
+    this._Ingredients.push(...newIngredients);
+    this._AddIngredientEvent.emit(this._Ingredients);
+  }
+
 
   public DeleteIngredient()
   {

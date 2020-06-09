@@ -17,6 +17,7 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void 
   {
     this.ingredients = this.shoppingListSRV._Ingredients;
+    this.shoppingListSRV._AddIngredientEvent.subscribe(x=> x = this.ingredients);
   }
   
   onItemClicked(selecedIngredient : Ingredient)

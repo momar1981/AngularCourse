@@ -1,6 +1,10 @@
 import { Recipe } from '../recipe.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../../shared/ingredient.model';
+import { ShoppingListService } from 'src/app/shopping-list/service/shopping-list.service';
+
+@Injectable()
+  
 export class RecipeService 
 {
  private recipes: Recipe[] = [
@@ -9,12 +13,17 @@ export class RecipeService
                                 new Recipe('A Test Recipe 2','This is simply Description 2','https://previews.123rf.com/images/vmalafeevskiy/vmalafeevskiy1706/vmalafeevskiy170600007/80167889-fast-food-drawings-white-background.jpg',
                                 [new Ingredient('Buns',30),new Ingredient('Meat',40)])];
   
-  constructor() { }
+  constructor(private shoppingListSRV : ShoppingListService) { }
   
   _SelectedRecipeItemEvent = new EventEmitter<Recipe>(); 
 
   public getRecipesList()
   {
     return this.recipes.slice();
+  }
+
+  public addIngredientsToShoppingList(ingredients : Ingredient [])
+  {
+    this.shoppingListSRV.AddIngredients(ingredients);
   }
 }
