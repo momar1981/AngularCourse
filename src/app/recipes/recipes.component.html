@@ -2,12 +2,10 @@
     <div class="col-md-5">
         <app-recipe-list></app-recipe-list>  
     </div>
-    <div class="col-md-7" *ngIf="recipeItem; else recipeDetail">
-        <app-recipe-detail [InRecipeItem]="recipeItem" ></app-recipe-detail>  
+    <div class="col-md-7" >
+        {{initialMessage}}
+        <router-outlet></router-outlet>
     </div>
-    <ng-template #recipeDetail>
-        <P> Please Select a Recipe ....</P>
-    </ng-template>
 </div>
-
+ 
 

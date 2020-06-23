@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from './service/recipe.service';
 import { Recipe } from './recipe.model';
+import { ActivatedRoute } from '@angular/Router'
+
+
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
@@ -9,10 +12,12 @@ import { Recipe } from './recipe.model';
 })
 export class RecipesComponent implements OnInit {
   recipeItem : Recipe;
-  constructor(private recipeSRV :RecipeService) { }
+  initialMessage : string ; 
+  constructor(private recipeSRV :RecipeService, private aRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.recipeSRV._SelectedRecipeItemEvent.subscribe(x=> this.recipeItem = x);
+    this.initialMessage = this.aRoute.snapshot.data['InitialMessage'];
+    this.recipeSRV._SelectedRecipeItemEvent.subscribe(x=> this.initialMessage = x);
   }
 
 }
