@@ -13,12 +13,7 @@ export class RecipeItemComponent implements OnInit {
   constructor(private recipeSRV : RecipeService, private router : Router, private aRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.recipeProp);
+    
   }
 
-  onItemClicked(item : Recipe)
-  {
-      this.recipeSRV._SelectedRecipeItemEvent.emit('');
-     // this.router.navigate(['/recipes/',item.id],{relativeTo:this.aRoute});
-  }  
 }

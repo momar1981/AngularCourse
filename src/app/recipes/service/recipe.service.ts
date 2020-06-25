@@ -15,7 +15,7 @@ export class RecipeService
   
   constructor(private shoppingListSRV : ShoppingListService) { }
   
-  public _SelectedRecipeItemEvent = new EventEmitter<any>();
+  // public _SelectedRecipeItemEvent = new EventEmitter<any>();
 
   public getRecipe(id: Number)
   {

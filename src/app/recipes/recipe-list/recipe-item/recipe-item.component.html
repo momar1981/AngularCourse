@@ -7,7 +7,7 @@
        <a [routerLink]="['/recipes/',recipeProp.id]" 
           routerLinkActive="active"
           [routerLinkActiveOptions]={excat:true}
-          style="cursor: pointer;" class="list-group-item clearfix" (click)="onItemClicked(recipeProp)">
+          style="cursor: pointer;" class="list-group-item clearfix">
           <div class="pull-left">
             <h4 class="list-group-item-heading">{{ recipeProp.name }}</h4>
             <p class="list-group-item-text">{{ recipeProp.description }}</p>
