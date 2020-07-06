@@ -13,7 +13,7 @@ import { ActivatedRoute, Params } from '@angular/Router'
 export class RecipesComponent implements OnInit {
   recipeItem : Recipe;
   // initialMessage : string ; 
-  constructor(private recipeSRV :RecipeService, private aRoute : ActivatedRoute) { }
+  constructor( private aRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
 
