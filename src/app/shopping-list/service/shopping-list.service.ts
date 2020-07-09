@@ -1,42 +1,34 @@
 import {Ingredient} from '../../shared/ingredient.model';
-import { EventEmitter } from '@angular/core';
-import { Subject } from 'rxjs';
+import {Subject} from 'rxjs';
 
 export class ShoppingListService {
-  public  _Ingredients: Ingredient[] = [new Ingredient('Apples', 10), new Ingredient('Tomatoes',10)];
-  public _SelectedIngredient : Ingredient ;
+  private  ingredients: Ingredient[] = [new Ingredient('Apples', 10), new Ingredient('Tomatoes',10)];
+
+  public _IngredientsSubject = new Subject<Ingredient[]>();
+
   constructor() { }
 
-  _AddIngredientSubject = new Subject<Ingredient[]>();
+  public getIngredients()
+  {
+    return this.ingredients.slice();
+  }
 
   public AddIngredient(newIngredient : Ingredient)
   {
-    this._Ingredients.push(newIngredient);
-    this._AddIngredientSubject.next(this._Ingredients);
+    this.ingredients.push(newIngredient);
+    this._IngredientsSubject.next(this.ingredients);
+
   }
 
   public AddIngredients(newIngredients : Ingredient[])
   {
     // newIngredients.forEach(x => {
-    //   this._Ingredients.push(x);
+    //   this.ingredients.push(x);
     // });
-    this._Ingredients.push(...newIngredients);
-    this._AddIngredientSubject.next(this._Ingredients);
+    this.ingredients.push(...newIngredients);
+    this._IngredientsSubject.next(this.ingredients);
   }
 
 
-  public DeleteIngredient()
-  {
-    if(this._SelectedIngredient)
-    {
-      let index = this._Ingredients.findIndex(obj => obj == this._SelectedIngredient);
-      if (index > -1) 
-        this._Ingredients.splice(index, 1);
-    }
-  }
 
-  public ClearIngredients()
-  {
-    this._Ingredients.splice(0,this._Ingredients.length);
-  }
 }

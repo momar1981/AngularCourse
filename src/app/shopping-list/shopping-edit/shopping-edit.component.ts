@@ -27,11 +27,11 @@ export class ShoppingEditComponent implements OnInit
 
   deleteIngredient()
   {
-    this.shoppingListSRV.DeleteIngredient();
+
   }
   
   clearIngredients()
   {
-    this.shoppingListSRV.ClearIngredients();
+    
   }
 }
