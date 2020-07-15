@@ -1,2 +1,55 @@
 <p>edit-recipe works!</p>
 {{isEditMode ? 'EDIT' : 'NEW'}}
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="iForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-2">
+                    <input type="submit" value="Save" [disabled]="!iForm.valid && iForm.touched">
+                </div>
+                <div class="col-xs-2">
+                    <input type="button" value="Cancel" (click)="doCancel()">
+                </div>
+                <div class="col-xs-8">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Name : </label>
+                    <br>
+                    <input type="text" id="txtName" formControlName="name"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Image URL : </label>
+                    <br>
+                    <input type="text" id="txtImageUrl" formControlName="imagePath" #imgUrl/>
+                    <img [src]="imgUrl.value" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Description : </label>
+                    <br>
+                    <textarea cols="30" rows="4" id="txtDescription" formControlName="description"></textarea>
+                </div>
+            </div>
+            <br>
+            <label>Ingredient</label>
+            <br>
+            <br>
+            <div class="row" formArrayName="ingredientsList">
+                <div class="col-xs-12" *ngFor="let ingredient of iForm.get('ingredientsList')['controls']; let i = index" [formGroupName]="i">
+                        <span><input type="text" id="txtIngredientName" formControlName="name" /></span>
+                        <span><input type="text" id="txtIngredientAmount" formControlName="amount"/></span>   
+                        <span><input type="button" value="X"  (click)="onDeleteIngredient(i)" /></span>
+                </div>
+                <input type="button" value="Add Ingredient"  (click)="onAddIngredient(null,null)" />
+            </div> 
+           
+
+        </form>
+    </div>
+</div>

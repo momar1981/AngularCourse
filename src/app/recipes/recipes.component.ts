@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from './service/recipe.service';
+import { RecipeService } from '../shared/service/recipe.service';
 import { Recipe } from './recipe.model';
 import { ActivatedRoute, Params } from '@angular/Router'
 
@@ -8,7 +8,6 @@ import { ActivatedRoute, Params } from '@angular/Router'
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css'],
-  providers: [RecipeService]
 })
 export class RecipesComponent implements OnInit {
   recipeItem : Recipe;

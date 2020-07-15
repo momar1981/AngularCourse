@@ -1,4 +1,4 @@
-import {Ingredient} from '../../shared/ingredient.model';
+import {Ingredient} from '../ingredient.model';
 import {Subject} from 'rxjs';
 
 export class ShoppingListService {
@@ -52,7 +52,6 @@ export class ShoppingListService {
 
   public DeleteIngredient()
   {
-    debugger;
     if(this.selectedIngredient)
     {
       let index = this.ingredients.findIndex(obj => obj == this.selectedIngredient);
