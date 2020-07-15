@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <form (ngSubmit)="addIngredient(formLR)" #formLR="ngForm">
+        <form (ngSubmit)="addEditIngredient()" #formLR="ngForm">
             <div class="row">
                 <div class="col-ms-5 form-group">
                     <label for="name">Name</label> 
@@ -13,8 +13,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-success" [disabled]="!formLR.valid">Add</button>
-                    <button type="button" class="btn btn-danger" (click)="deleteIngredient()">Delete</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!formLR.valid">{{buttonTarget}}</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteIngredient()" *ngIf="buttonTarget == 'Edit'">Delete</button>
                     <button type="button" class="btn btn-primary" (click)="clearIngredients()" >Clear</button>
                 </div>
             </div>
