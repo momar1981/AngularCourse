@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 
-
+import {DataStorageService} from './shared/service/data-storage.service';
 import { ShoppingListService } from './shared/service/shopping-list.service';
 import { RecipeService } from './shared/service/recipe.service';
 
@@ -38,7 +38,7 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
   imports: [
     BrowserModule, HttpModule ,AppRoutingModule,FormsModule,ReactiveFormsModule
   ],
-  providers:[ShoppingListService,RecipeService],
+  providers:[ShoppingListService,RecipeService,DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

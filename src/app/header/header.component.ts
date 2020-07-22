@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
-import {RecipeService} from '../shared/service/recipe.service';
+import {DataStorageService} from '../shared/service/data-storage.service';
 
 
 @Component({
@@ -10,16 +10,16 @@ import {RecipeService} from '../shared/service/recipe.service';
 })
 export class HeaderComponent 
 {
-  constructor(private recipeSRV : RecipeService){}
+  constructor(private dataStorageSRV : DataStorageService){}
 
   saveData()
   {
-    this.recipeSRV.saveRecipsToDB();
+    this.dataStorageSRV.saveRecipsToDB();
   }
 
   getData()
   {
-    this.recipeSRV.loadRecipsFromDB();
+    this.dataStorageSRV.loadRecipsFromDB();
   }
 
 }
