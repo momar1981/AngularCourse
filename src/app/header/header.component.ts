@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Recipe } from '../recipes/recipe.model';
+import {RecipeService} from '../shared/service/recipe.service';
+
 
 @Component({
   selector: 'app-header',
@@ -7,6 +10,16 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent 
 {
+  constructor(private recipeSRV : RecipeService){}
 
+  saveData()
+  {
+    this.recipeSRV.saveRecipsToDB();
+  }
+
+  getData()
+  {
+    this.recipeSRV.loadRecipsFromDB();
+  }
 
 }
