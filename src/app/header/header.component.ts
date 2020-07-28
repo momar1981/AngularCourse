@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 import {DataStorageService} from '../shared/service/data-storage.service';
-
+import {AuthService} from '../auth/auth.service'
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ import {DataStorageService} from '../shared/service/data-storage.service';
 })
 export class HeaderComponent 
 {
-  constructor(private dataStorageSRV : DataStorageService){}
+  constructor(private dataStorageSRV : DataStorageService,private authSRV: AuthService){}
 
   saveData()
   {
@@ -22,4 +22,12 @@ export class HeaderComponent
     this.dataStorageSRV.loadRecipsFromDB();
   }
 
+  signOut(){
+    this.authSRV.SignOut();
+  }
+
+  isAuth()
+  {
+    return this.authSRV.isAuth();
+  }
 }

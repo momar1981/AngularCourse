@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {RecipeService} from './recipe.service';
 import {Recipe} from '../../recipes/recipe.model';
+import {AuthService} from '../../auth/auth.service'
 
 import {map} from "rxjs/operators";
 import { Http,Response } from '@angular/http';
@@ -9,11 +10,12 @@ import { Http,Response } from '@angular/http';
 
 export class DataStorageService {
 
-  constructor(private recipeSRV :RecipeService, private http : Http ) { }
+  constructor(private recipeSRV :RecipeService, private http : Http,private authSRV: AuthService ) { }
   
   public loadRecipsFromDB()
   {
-    (this.http.get('https://recipe-book-demo-2020.firebaseio.com/recips.json')
+    let token = this.authSRV.getToken();
+    (this.http.get('https://recipe-book-demo-2020.firebaseio.com/recips.json?auth='+token)
     .pipe
     (
       map
@@ -41,7 +43,8 @@ export class DataStorageService {
 
   saveRecipsToDB()
   {
-    (this.http.put('https://recipe-book-demo-2020.firebaseio.com/recips.json',this.recipeSRV.getRecipesList()))
+    let token = this.authSRV.getToken();
+    (this.http.put('https://recipe-book-demo-2020.firebaseio.com/recips.json?auth='+token,this.recipeSRV.getRecipesList()))
     .subscribe
     (
       (response) =>{},
