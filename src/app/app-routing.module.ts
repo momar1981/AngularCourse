@@ -3,14 +3,12 @@ import { NgModule } from '@angular/core';
 import { Routes,RouterModule } from '@angular/Router';
 
 
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { AuthService } from './auth/auth.service';
+
 
 const appRoutes : Routes = 
 [
-{path:'shopping-list', component:ShoppingListComponent, canActivate:[AuthService]},
 {path:'signup', component:SignupComponent},
 {path:'signin', component:SigninComponent}
 
