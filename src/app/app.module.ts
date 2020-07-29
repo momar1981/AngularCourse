@@ -9,26 +9,28 @@ import { RecipeService } from './shared/service/recipe.service';
 import { AuthService } from './auth/auth.service';
 
 import { AppRoutingModule } from './app-routing.module';
-
-import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 import {SharedModule} from './shared/shared.module';
-import { HeaderComponent } from './header/header.component';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
-import { HomeComponent } from './home/home.component';
+
+import { AppComponent } from './app.component';
+
+
+
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule
     , HttpModule
      
+    ,CoreModule
     ,AppRoutingModule
     ,ShoppingListModule
     ,AuthModule
