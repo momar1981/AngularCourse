@@ -9,10 +9,16 @@ import { ShoppingListService } from '../shared/service/shopping-list.service';
 import { RecipeService } from '../shared/service/recipe.service';
 import { DataStorageService } from '../shared/service/data-storage.service';
 import { AuthService } from '../auth/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../shared/auth.interceptor';
+import { AlertMessageService } from '../shared/alert-message.service';
+import { AlertMessageComponent } from '../shared/alert-message/alert-message.component';
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    AlertMessageComponent,
     HomeComponent
   ],
   imports: [
@@ -21,8 +27,10 @@ import { AuthService } from '../auth/auth.service';
   ],
   exports:[
     AppRoutingModule,
-    HeaderComponent
+    HeaderComponent,
+    AlertMessageComponent
   ], 
-  providers:[ShoppingListService,RecipeService,DataStorageService,AuthService],
+  providers:[ShoppingListService,RecipeService,DataStorageService,AuthService,AlertMessageService,
+  {provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi : true}],
 })
 export class CoreModule { }

@@ -25,7 +25,7 @@ export class DataStorageService {
 
 
     (this.http.get<Recipe[]>('https://recipe-book-demo-2020.firebaseio.com/recips.json',
-    {params : new HttpParams().append('auth',token)}
+    //{params : new HttpParams().append('auth',token)}
     // observe:'response',//observe:'body'
     // responseType:'text'//responseType:'json'
     )
@@ -55,11 +55,11 @@ export class DataStorageService {
 
   saveRecipsToDB()
   {
-    let token = this.authSRV.getToken();
+    //let token = this.authSRV.getToken();
     (this.http.put
                 ('https://recipe-book-demo-2020.firebaseio.com/recips.json',this.recipeSRV.getRecipesList()
                 ,{
-                  params : new HttpParams().append('auth',token),
+                 // params : new HttpParams().append('auth',token),
                   observe : 'events'
                 })
     )

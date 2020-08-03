@@ -1,0 +1,9 @@
+<div>
+
+    <div *ngIf="alertObj.IsDialogOpen" id="divAlertMessage">
+      <button type="button" (click)="closeDialog()">X</button>
+        <p>
+          {{alertObj.Message}}
+        </p>
+    </div>
+</div> 
